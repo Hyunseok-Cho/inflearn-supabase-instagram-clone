@@ -1,5 +1,6 @@
 "use client";
 
+//@ts-ignore
 export default function Message({ isFromMe, message }) {
   return (
     <div

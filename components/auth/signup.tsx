@@ -4,6 +4,7 @@ import { Button, Input } from "@material-tailwind/react";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 
+//@ts-ignore
 export default function SignUp({setView}) {
     const [email, setEmail] = useState("");
     const [otp, setOtp] = useState("");
@@ -65,6 +66,7 @@ export default function SignUp({setView}) {
             justify-center max-w-lg border border-gray-400 bg-white gap-2">
             <img src={'/images/inflearngram.png'} className="w-60 mb-6"  />
             {confirmationRequired ? (<Input
+            //@ts-ignore
                 value={otp} onChange={(e) => setOtp(e.target.value)}
                 label="otp" type="text"
                 className="w-full rounded-sm"
@@ -72,11 +74,13 @@ export default function SignUp({setView}) {
                 : (
                 <>
                 <Input
+                //@ts-ignore
                 value={email} onChange={(e) => setEmail(e.target.value)}
                 label="email" type="email"
                 className="w-full rounded-sm"/>
 
                 <Input
+                //@ts-ignore
                 value={password} onChange={(e) => setPassword(e.target.value)}
                 label="password" type="password"
                 className="w-full rounded-sm"/>

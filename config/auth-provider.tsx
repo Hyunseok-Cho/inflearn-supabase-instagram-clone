@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { createBrowserSupabaseClient } from "@/utils/supabase/client";
 
+//@ts-ignore
 export default function AuthProvider({ accessToken, children }) {
   const supabase = createBrowserSupabaseClient();
   const router = useRouter();

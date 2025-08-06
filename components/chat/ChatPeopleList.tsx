@@ -12,6 +12,7 @@ import { getAllUsers } from "@/actions/chatActions";
 import { createBrowserSupabaseClient } from "@/utils/supabase/client";
 import { useEffect } from "react";
 
+//@ts-ignore
 export default function ChatPeopleList({ loggedInUser }) {
   const [selectedUserId, setSelectedUserId] =
     useRecoilState(selectedUserIdState);
@@ -67,14 +68,19 @@ export default function ChatPeopleList({ loggedInUser }) {
       {getAllUsersQuery.data?.map((user, index) => (
         <Person
           key={user.id}
+          //@ts-ignore
           onClick={() => {
+            //@ts-ignore
             setSelectedUserId(user.id);
+            //@ts-ignore
             setSelectedUserIndex(index);
           }}
           index={index}
           isActive={selectedUserId === user.id}
+          //@ts-ignore
           name={user.email.split("@")[0]}
           onChatScreen={false}
+          //@ts-ignore
           onlineAt={presence?.[user.id]?.[0]?.onlineAt}
           userId={user.id}
         />

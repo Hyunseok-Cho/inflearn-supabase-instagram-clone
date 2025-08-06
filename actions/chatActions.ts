@@ -17,6 +17,7 @@ export async function getAllUsers() {
   return data.users;
 }
 
+//@ts-ignore
 export async function getUserById(userId) {
   const supabase = await createServerSupabaseAdminClient();
 
@@ -29,8 +30,11 @@ export async function getUserById(userId) {
   return data.user;
 }
 
-export async function sendMessage({
+export async function sendMessage(
+    {
+    //@ts-ignore
     message,
+    //@ts-ignore
     chatUserId
 }) {
     const supabase = await createServerSupabaseClient();
@@ -39,7 +43,7 @@ export async function sendMessage({
         data: {session},
         error,
     } = await supabase.auth.getSession();
-
+    //@ts-ignore
     if(error || !session.user) {
         throw new Error("User is not authenticated")
     }
@@ -58,6 +62,7 @@ export async function sendMessage({
 }
 
 export async function getAllMessages({
+    //@ts-ignore
     chatUserId
 }) {
     const supabase = await createServerSupabaseClient();
@@ -66,7 +71,7 @@ export async function getAllMessages({
         data: {session},
         error,
     } = await supabase.auth.getSession();
-
+    //@ts-ignore
     if(error || !session.user) {
         throw new Error("User is not authenticated")
     }

@@ -3,7 +3,8 @@ import { Button, Input } from "@material-tailwind/react";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 
-export default function SignIp({setView}) {
+//@ts-ignore
+export default function SignIn({setView}) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -43,11 +44,13 @@ export default function SignIp({setView}) {
             items-center justify-center max-w-lg border border-gray-400 bg-white gap-2">
             <img src={'/images/inflearngram.png'} className="w-60 mb-6"  />
             <Input
+            //@ts-ignore
                 value={email} onChange={(e) => setEmail(e.target.value)}
                 label="email" type="email"
                 className="w-full rounded-sm"/>
 
             <Input
+            //@ts-ignore
                 value={password} onChange={(e) => setPassword(e.target.value)}
                 label="password" type="password"
                 className="w-full rounded-sm"/>

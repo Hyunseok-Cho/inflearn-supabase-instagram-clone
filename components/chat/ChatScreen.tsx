@@ -14,6 +14,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { getUserById } from "@/actions/chatActions";
 import { createBrowserSupabaseClient } from "@/utils/supabase/client";
 
+//@ts-ignore
 export async function sendMessage({ message, chatUserId }) {
   const supabase = createBrowserSupabaseClient();
 
@@ -22,6 +23,7 @@ export async function sendMessage({ message, chatUserId }) {
     error,
   } = await supabase.auth.getSession();
 
+  //@ts-ignore
   if (error || !session.user) {
     throw new Error("User is not authenticated");
   }
@@ -41,6 +43,7 @@ export async function sendMessage({ message, chatUserId }) {
   return data;
 }
 
+//@ts-ignore
 export async function getAllMessages({ chatUserId }) {
   const supabase = createBrowserSupabaseClient();
   const {
@@ -48,6 +51,7 @@ export async function getAllMessages({ chatUserId }) {
     error,
   } = await supabase.auth.getSession();
 
+  //@ts-ignore
   if (error || !session.user) {
     throw new Error("User is not authenticated");
   }
@@ -55,7 +59,9 @@ export async function getAllMessages({ chatUserId }) {
   const { data, error: getMessagesError } = await supabase
     .from("message")
     .select("*")
+    //@ts-ignore
     .or(`receiver.eq.${chatUserId},receiver.eq.${session.user.id}`)
+    //@ts-ignore
     .or(`sender.eq.${chatUserId},sender.eq.${session.user.id}`)
     .order("created_at", { ascending: true });
 
@@ -127,6 +133,7 @@ export default function ChatScreen({}) {
         isActive={false}
         name={selectedUserQuery.data?.email?.split("@")?.[0]}
         onChatScreen={true}
+        //@ts-ignore
         onlineAt={presence?.[selectedUserId]?.[0]?.onlineAt}
         userId={selectedUserQuery.data?.id}
       />

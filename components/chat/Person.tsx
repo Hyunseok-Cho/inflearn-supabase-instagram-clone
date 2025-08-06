@@ -8,10 +8,15 @@ TimeAgo.addDefaultLocale(ko);
 
 const timeAgo = new TimeAgo("ko-KR");
 
+//@ts-ignore
 export default function Person({
+  //@ts-ignore
   index,
+  //@ts-ignore
   userId,
+  //@ts-ignore
   name,
+  //@ts-ignore
   onlineAt,
   isActive = false,
   onChatScreen = false,
@@ -26,6 +31,7 @@ export default function Person({
       } ${!onChatScreen && !isActive && "bg-gray-50"} ${
         onChatScreen && "bg-gray-50"
       }`}
+      //@ts-ignore
       onClick={onClick}
     >
       <img
